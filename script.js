@@ -1,18 +1,17 @@
-function updateText() {
-  return new Promise((resolve, reject) => {
+function delayHello() {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve("Hello, world!");
-    }, 1000);
+    }, 1000); // Resolve after 1 second
   });
 }
 
-const outputElement = document.getElementById("output");
-
-updateText()
-  .then((text) => {
-    outputElement.textContent = text;
+// Update text after the promise resolves
+delayHello()
+  .then((message) => {
+    const outputElement = document.getElementById("output");
+    outputElement.textContent = message;
   })
   .catch((error) => {
     console.error(error);
   });
-
